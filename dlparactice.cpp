@@ -85,6 +85,10 @@ node *head;
   }
   void removehead()
   {
+    if(head->next==NULL && head->prev==NULL){
+       delete head;
+       head=NULL;
+    }
     node *temp = head;
     head = head->next;
     head->prev = NULL;
@@ -184,32 +188,84 @@ void deleteAlt(dl l)
 int main()
 {
   dl l;
-  cout << l.isempty() << endl;
+  int flag=1;
+  int choice;
   
-  l.addhead(1);
-  l.addhead(2);
-  l.addhead(3);
-  l.addhead(4);
-  l.addhead(5);
-  l.addback(0);
-  // l.display();
-  // cout << endl;
-  // l.removehead();
-  // l.display();
-  // cout << endl;
-  // l.removetail();
-  // l.display();
-  // l.remove(60);
-  // l.display();
-  // l.reverse();
-  // l.addbetween(67,60);
-
-  l.display();
-  cout<<endl;
-  // l.swapnode(40,80);
-//   l.swapnode(0,4);
-//   l.swapnode(0,4);
-  //  deleteAlt(l);
-  l.reverse();
-  l.display();
+  // cout << l.isempty() << endl;
+  cout << "----- Menu -----\n"
+         << "1.Enter the data at the head\n"
+         << "2.Remove data from head\n"
+         << "3.Remove from tail.\n"
+         << "4.Enter The data at the back\n"
+         << "5.Reverse the linked list\n"
+         << "6..Remove data \n"
+         << "7.Add Data in between\n"
+         << "8.Delete Alternative\n"
+         << "9.Display\n"
+         << "10.quit\n";
+    while(flag){
+        cout << "Enter your choice : ";
+        cin >> choice;
+        
+        if(choice==1)
+        {
+        	cout << "Enter data : ";
+          int x;
+            cin >> x;
+            l.addhead(x);
+		}
+		else if(choice==2)
+		{
+			cout << "Removed data from head  \n";
+            l.removehead();
+           
+		}
+		else if(choice==3)
+		{
+			cout << "Remove data from tail: \n";
+            l.removetail();
+		}
+     else if(choice==4){
+      cout<<"Enter the data at the back : ";
+      int x;
+         cin>>x;
+         l.addback(x);
+     }
+     else if(choice==5){
+      cout<<"Reverse The string: ";
+        l.display();
+     }
+     else if(choice==6){
+      cout<<"Enter the data you want to remove :";
+      int x;
+      cin>>x;
+      l.remove(60);
+     }
+     else if(choice==7){
+      cout<<"Enter the number after which you want to add data: ";
+      int x;
+      cin>>x;
+      cout<<"Enter the number you want to enter : ";
+      int y;
+      cin>>y;
+      l.addbetween(y,x);
+     }
+     else if(choice==8){
+      cout<<"Delete Alternative \n";
+      deleteAlt(l);
+        
+     }
+     else if(choice==9){
+      if(l.isempty())
+        cout<<"No data :\n";
+       else 
+       l.display();
+     }
+		else if(choice==10)
+		{
+			flag=0;
+		}
+        
+    }
+  
 }
