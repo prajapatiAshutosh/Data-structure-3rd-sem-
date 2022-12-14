@@ -1,4 +1,4 @@
-#include<include>
+#include<iostream>
 using namespace std;
 
 class Node
@@ -19,7 +19,7 @@ class Queue
   {front=NULL;back=NULL;size=0;}
   void enqueue(int a)
   {
-    cout<<“Pushing “<<a<<” to the Circular Queue”<<endl;
+    cout<<"Pushing "<<a<<" to the Circular Queue"<<endl;
     size++;
     Node *temp= new Node(a);
     if(front==NULL)
@@ -32,15 +32,15 @@ class Queue
   }
   int dequeue()
   {
-    if(front==NULL) {cout<<“The Circular Queue is empty”<<endl; return –1;}
-    size–;
+    if(front==NULL) {cout<<"The Circular Queue is empty"<<endl; return -1;}
+    size--;
     int a;
     if(front==back)
     {
       a=front->value;
       delete front;
       front=back=NULL;
-      cout<<“Popping the top value “<<a<<” from the Circular Queue”<<endl;
+      cout<<"Popping the top value "<<a<<"from the Circular Queue"<<endl;
       return a;
     }
     Node *temp=front;
@@ -48,17 +48,17 @@ class Queue
     front=front->next;
     back->next=front;
     delete temp;
-    cout<<“Popping the top value “<<a<<” from the Circular Queue”<<endl;
+    cout<<"Popping the top value "<<a<<" from the Circular Queue"<<endl;
     return a;
   }
   void Show()
   {
-    if(size==0) {cout<<“The Circular Queue is empty.”<<endl;return;}
-    cout<<“The Queue is:”;
+    if(size==0) {cout<<"The Circular Queue is empty."<<endl;return;}
+    cout<<"The Queue is:";
     Node *temp=front;
     while(temp->next!=front)
-    {cout<<” “<<temp->value;temp=temp->next;}
-    cout<<” “<<temp->value;
+    {cout<<" "<<temp->value;temp=temp->next;}
+    cout<<" "<<temp->value;
     cout<<endl;
   }
 
